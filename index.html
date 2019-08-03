@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>RevealURL</title>
+  <link rel="icon" type="image/png" sizes="28x32" href="assets/icons/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
@@ -24,21 +25,7 @@
   
   <div id="about" class="modal">
       <h2> 🤘About</h2>
-        <table style="width:100%">
-            <tr>
-              <td>Title</td>
-              <td id="title">sdjdncldfkjnsvjfdhbvkdjfbv dkjfbvdfkjhc</td>
-            </tr>
-            <tr>
-              <td>Delay</td>
-              <td id="delay">2s</td> 
-            </tr>
-            <tr>
-              <td>Status</td>
-              <td id="status">301</td> 
-            </tr>
-          </table>
-        <a href="http://www.siteadvisor.com/sitereport.html?url=www.baeldung.com" target="_blank">Check Safety</a>
+        
     </div>
 
   <div id="modal" class="modal">
@@ -46,24 +33,23 @@
       <table style="width:100%">
           <tr>
             <td>Title</td>
-            <td id="title">sdjdncldfkjnsvjfdhbvkdjfbv dkjfbvdfkjhc</td>
+            <td id="title"></td>
           </tr>
           <tr>
             <td>Delay</td>
-            <td id="delay">2s</td> 
+            <td id="delay"></td> 
           </tr>
           <tr>
             <td>Status</td>
-            <td id="status">301</td> 
+            <td id="status"></td> 
           </tr>
         </table>
-      <a href="http://www.siteadvisor.com/sitereport.html?url=www.baeldung.com" target="_blank">Check Safety</a>
   </div>
       
 
   <nav class="nav">
     <a href="#" class="logo"></a>
-    <p class="converted-stats">Total URLs revealed:<span>12345</span></p>
+    <p class="converted-stats">Total URLs revealed:<span id="reveal-count">12345</span></p>
   </nav>
 
   <main class="text--center convert-section__wrapper">
@@ -79,8 +65,14 @@
     </div>
     <div class="converted-url">
       <div class="header">
+        <div class="align-all--left">
           <h5 class="heading">Revealed URL</h5>
-          <a href="#modal" class="info-icon" rel="modal:open"></a>
+          <a href="#modal" class="icon info" rel="modal:open"></a>
+          <a href="#" onclick="copyToClipboard('convertedURL')" class="icon copy"></a>
+        </div>
+        <div class="align-all--right">
+          <p id="spam-status"></p>
+        </div>
       </div>
       <a class="url" href="#" id="convertedURL" target="_blank"></a>
     </div>

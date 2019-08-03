@@ -70,6 +70,24 @@ td {
 }
 
 /* ======
+  * Icon 
+====== */
+
+.icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.info {
+  background: url('../icons/info.svg') no-repeat center center;
+}
+
+.copy {
+  background: url('../icons/copy.svg') no-repeat center center;
+}
+
+/* ======
   * Nav 
 ====== */
 
@@ -91,6 +109,7 @@ td {
   border-radius: 4px;
   margin: 0;
   opacity: 0.6;
+  display: none;
 }
 
 /* ======
@@ -130,7 +149,7 @@ td {
 #error-container {
   color: var(--error-color);
   text-transform: uppercase;
-  text-align: left;
+  float: left;
   display: none;
 }
 
@@ -175,7 +194,7 @@ td {
 /* Converted Section */
 
 .converted-url {
-  display: block;
+  display: none;
   background: var(--primary-color);
   padding: 12px 20px;
   max-width: 720px;
@@ -190,22 +209,14 @@ td {
 }
 
 .converted-url .header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: block;
+  height: 20px;
 }
 
 .converted-url .header .heading {
   opacity: 0.6;
   text-align: left;
   word-break: break-word;
-}
-
-.converted-url .header .info-icon {
-  background: url('../icons/info.svg') no-repeat center center;
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
 }
 
 .converted-url .url,

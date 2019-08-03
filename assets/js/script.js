@@ -1,25 +1,35 @@
 // Loader
-
 document.onreadystatechange = function () {
   var state = document.readyState
   if (state == 'complete') {
-      setTimeout(function(){
-        $('#loader').fadeOut('slow');
-      },1000);
+    setTimeout(function () {
+      $('#loader').fadeOut('slow');
+    }, 1000);
   }
 }
 
 // Random Color loader
-$(function () { 
-  const items = ['#2529D8','#FAA916','#EF2D56', '#6BD425', '#A01A7D']
+$(function () {
+  const items = ['#2529D8', '#FAA916', '#EF2D56', '#6BD425', '#A01A7D']
   const root = document.documentElement;
-  let randomColor = items[Math.floor(Math.random()*items.length)];
+  let randomColor = items[Math.floor(Math.random() * items.length)];
   root.style.setProperty('--primary-color', `${randomColor}`)
 });
 
+// Clipboard
+function copyToClipboard(id) {
+  var from = document.getElementById(id);
+  var range = document.createRange();
+  window.getSelection().removeAllRanges();
+  range.selectNode(from);
+  window.getSelection().addRange(range);
+  document.execCommand('copy');
+  window.getSelection().removeAllRanges();
+}
+
 // AJAX call
-function getData(form){
-  $('#error-container').css('display', 'none');
+function getData(form) {
+  $('#error-container').fadeOut('fast');
   event.preventDefault();
   event.stopPropagation();
 
@@ -31,34 +41,55 @@ function getData(form){
   if (url.match(emailRegExp)) {
     // Disabling button
     form.elements.submit.setAttribute('disabled', 'true');
-    form.elements.submit.value="Loading";
+    form.elements.submit.value = "Loading";
 
     // Validations
 
     // AJAX
-    $.ajax({
+    $.post({
       url: "https://check-user-api.herokuapp.com/api/v1/uncoverUrl/",
-      async: true, 
-      success: function(res){
-      // Updating Link
-      $('#convertedURL').text(res.url);
-      $('#convertedURL').setAttribute('href',res.url);
+      async: true,
+      contentType: "application/json",
+      data: JSON.stringify({
+        url: url
+      }),
+      success: function (res) {
+        // Updating Data
+        $('#convertedURL').text(res.url);
+        $('#convertedURL').attr('href', res.url);
 
-      // Enabling submit button
-      form.elements.submit.removeAttribute('disabled');
-      form.elements.submit.value="reveal";
+        if (res.spam === "true") {
+          $('#spam-status').html(`👍 SAFE`)
+        } else if (res.spam === "false") {
+          $('#spam-status').html(`👹 SPAM`)
+        } else {
+          $('#spam-status').html(`🤔 No safety info`)
+        }
 
-      // Show result block
-      $('.converted-url').css('display','block');
-    },
-    error: function(err) {
-      // Enabling submit button
-      form.elements.submit.removeAttribute('disabled');
-      form.elements.submit.value="reveal";
-    }
-  });
+        // Updating Extra details
+        $('#title').html(res.pageTitle);
+        $('#delay').html(`${res.delay}ms`);
+        $('#status').html(res.status);
+
+        // Updating Stats
+        $('.converted-stats').fadeIn('fast');
+        $('#reveal-count').html(res.count);
+
+        // Enabling submit button
+        form.elements.submit.removeAttribute('disabled');
+        form.elements.submit.value = "reveal";
+
+        // Show result block
+        $('.converted-url').fadeIn('fast');
+      },
+      error: function (err) {
+        // Enabling submit button
+        form.elements.submit.removeAttribute('disabled');
+        form.elements.submit.value = "reveal";
+      }
+    });
   } else {
-    $('#error-container').css('display', 'block');
+    $('#error-container').fadeIn('fast');
   }
 
 }
