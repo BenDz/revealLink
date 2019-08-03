@@ -1,0 +1,264 @@
+/* 
+primary-color: #2529D8, rgba(37,41,216)
+Secondary-color: #030616 (BG), rgba(3,6,22)
+ */
+
+:root {
+  --primary-color: #2529D8;
+  --secondary-color: #030616;
+  --error-color: #FF005E;
+  --font-color: #fff;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--secondary-color);
+  color: var(--font-color);
+  background-image: url('../icons/temple.svg');
+  font-family: 'Roboto Mono', monospace;
+  overflow: hidden;
+}
+
+/* ======
+  * Loader 
+====== */
+
+#loader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 9999;
+  background: url("../icons/loader.svg") no-repeat center center #030616;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#loader:after {
+  content: './Loading';
+  position: fixed;
+  top: 54%;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+  height: 100%;
+  text-transform: uppercase;
+}
+
+/* ======
+ * Model
+===== */
+
+.modal {
+  height: 400px;
+  background: var(--secondary-color);
+  border-radius: 4px;
+  border-style: dashed;
+  padding: 28px;
+  border: 2px solid var(--primary-color);
+  box-shadow: 5px 6px 0px var(--primary-color);
+}
+
+table,
+th,
+td {
+  border: 1px solid #fff;
+  text-align: center
+}
+
+/* ======
+  * Nav 
+====== */
+
+.nav {
+  height: 40px;
+  margin: 16px;
+}
+
+.nav .logo {
+  width: 40px;
+  height: 40px;
+  float: left;
+  background: url('../icons/logo.svg') no-repeat center center;
+}
+
+.nav .converted-stats {
+  float: right;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin: 0;
+  opacity: 0.6;
+}
+
+/* ======
+  * Converting section 
+====== */
+
+.convert-section {
+  position: fixed;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -65%);
+  margin: 50px auto;
+}
+
+.convert-section .heading {
+  margin: 0;
+  line-height: 28px;
+  font-size: 28px;
+}
+
+.convert-form .input-container {
+  margin: 25px auto;
+}
+
+.convert-form .input {
+  all: initial;
+  display: block;
+  background: var(--font-color);
+  border-radius: 4px;
+  min-width: 420px;
+  max-width: 600px;
+  font-size: 20px;
+  font-family: inherit;
+  padding: 16px;
+}
+
+#error-container {
+  color: var(--error-color);
+  text-transform: uppercase;
+  text-align: left;
+  display: none;
+}
+
+.convert-form .btn {
+  all: initial;
+  background: var(--primary-color);
+  height: 40px;
+  width: 200px;
+  text-align: center;
+  border-radius: 4px;
+  color: var(--font-color);
+  font-family: inherit;
+  text-transform: capitalize;
+  cursor: pointer;
+  overflow: hidden;
+
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+.convert-form .btn:hover {
+  text-decoration: none;
+  box-shadow: 0px 2px 0px 0px var(--font-color);
+}
+
+.convert-form .btn:active {
+  box-shadow: 0px 0px 0px 2px var(--font-color);
+}
+
+.convert-form .btn:disabled {
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+/* Converted Section */
+
+.converted-url {
+  display: block;
+  background: var(--primary-color);
+  padding: 12px 20px;
+  max-width: 720px;
+  margin: auto;
+  font-size: 16px;
+  border-radius: 4px;
+  margin-top: 60px;
+  position: absolute;
+  bottom: 160px;
+  left: 0;
+  right: 0;
+}
+
+.converted-url .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.converted-url .header .heading {
+  opacity: 0.6;
+  text-align: left;
+  word-break: break-word;
+}
+
+.converted-url .header .info-icon {
+  background: url('../icons/info.svg') no-repeat center center;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.converted-url .url,
+.converted-url .url:visited,
+a,
+a:visited,
+a:hover {
+  color: var(--font-color);
+}
+
+
+/* ======
+  * Footer 
+====== */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer .footer-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  list-style: none;
+  font-size: 12px;
+}
+
+footer .footer-nav .footer-nav__item {
+  padding: 0px 16px;
+}
+
+footer .footer-nav .footer-nav__item a {
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  position: relative;
+}
+
+footer .footer-nav .footer-nav__item a:after {
+  content: "";
+  display: block;
+  height: 2px;
+  position: absolute;
+  background: var(--primary-color);
+  padding-bottom: 2px;
+  margin-top: -2px;
+  opacity: 0;
+  width: 100%;
+}
+
+footer .footer-nav .footer-nav__item a:hover:after {
+  text-decoration: none;
+  margin-top: 0px;
+  opacity: 1;
+}
