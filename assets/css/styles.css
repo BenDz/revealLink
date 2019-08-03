@@ -20,6 +20,10 @@ body {
   overflow: hidden;
 }
 
+ul {
+  list-style: square;
+}
+
 /* ======
   * Loader 
 ====== */
@@ -156,8 +160,10 @@ td {
 .convert-form .btn {
   all: initial;
   background: var(--primary-color);
-  height: 40px;
+  padding: 10px;
   width: 200px;
+  font-size: 16px;
+  line-height: 20px;
   text-align: center;
   border-radius: 4px;
   color: var(--font-color);
@@ -203,9 +209,13 @@ td {
   border-radius: 4px;
   margin-top: 60px;
   position: absolute;
-  bottom: 160px;
+  bottom: 120px;
   left: 0;
   right: 0;
+  min-height: 90px;
+  max-height: 120px;
+  word-break: break-word;
+  overflow: scroll;
 }
 
 .converted-url .header {
@@ -217,6 +227,14 @@ td {
   opacity: 0.6;
   text-align: left;
   word-break: break-word;
+}
+
+.converted-url #copied-status {
+  font-size: 12px;
+  margin-left: 4px;
+  display: none;
+  margin: 0;
+  padding: 0;
 }
 
 .converted-url .url,
@@ -272,4 +290,61 @@ footer .footer-nav .footer-nav__item a:hover:after {
   text-decoration: none;
   margin-top: 0px;
   opacity: 1;
+}
+
+/* ======
+  * MQ 
+====== */
+
+@media only screen and (max-width: 500px) {
+  .convert-section .heading {
+    font-size: 20px;
+  }
+
+  .convert-form .input {
+    min-width: 300px;
+  }
+
+  .converted-url {
+    width: 320px;
+    bottom: 80px;
+  }
+
+  .converted-url .header .heading,
+  #spam-status {
+    font-size: 12px
+  }
+
+  footer .footer-nav {
+    padding: 0;
+    justify-content: center;
+    font-size: 8px;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .convert-form {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  .convert-form .input {
+    min-width: 230px;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 4px 0px 0px 4px;
+  }
+
+  .convert-form .btn {
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 0px 4px 4px 0px;
+  }
+
+  .converted-url {
+    padding: 10px 14px;
+    bottom: 50px;
+    height: 80px;
+  }
 }

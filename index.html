@@ -22,67 +22,92 @@
 
 <body>
   <div id="loader"></div>
-  
+
+  <!-- MODAL - about-->
   <div id="about" class="modal">
-      <h2> 🤘About</h2>
-        
-    </div>
+    <h2> 🤘Makers</h2>
+    <ul>
+      <li><a href="https://gaurav-shankar.github.io/grv19/" target="_blank">Gaurav Shankar 👨‍💻</a></li>
+      <li><a href="https://sarathsantoshdamaraju.github.io/sarathdamaraju/" target="_blank">Krishna Damaraju 🖌️
+          👨‍💻</a></li>
+    </ul>
 
-  <div id="modal" class="modal">
-    <h2> 💡 More details</h2>
-      <table style="width:100%">
-          <tr>
-            <td>Title</td>
-            <td id="title"></td>
-          </tr>
-          <tr>
-            <td>Delay</td>
-            <td id="delay"></td> 
-          </tr>
-          <tr>
-            <td>Status</td>
-            <td id="status"></td> 
-          </tr>
-        </table>
+    <h2> 🏆 Others</h2>
+    <ul>
+      <li class="footer-nav__item"><a href="https://github.com/SarathSantoshDamaraju/revealLink/issues/new?assignees=&labels=&template=bug_report.md&title=" target="_blank">Report Bug</a></li>
+      <li class="footer-nav__item"><a href="https://github.com/SarathSantoshDamaraju/revealLink/issues/new?assignees=&labels=&template=feature_request.md&title=" target="_blank">Request Feature</a></li>
+    </ul>
   </div>
-      
 
+  <!-- MODAL - info-->
+  <div id="info" class="modal">
+    <h2> 💡 More details</h2>
+    <table style="width:100%">
+      <tr>
+        <td>Title</td>
+        <td id="title"></td>
+      </tr>
+      <tr>
+        <td>Delay</td>
+        <td id="delay"></td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td id="status"></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- NAV -->
   <nav class="nav">
     <a href="#" class="logo"></a>
     <p class="converted-stats">Total URLs revealed:<span id="reveal-count">12345</span></p>
   </nav>
 
+  <!-- MAIN -->
   <main class="text--center convert-section__wrapper">
+
+    <!-- FORM -->
     <div class="convert-section">
       <h1 class="heading">Enter URL to <span class="text--underline">Reveal</span></h1>
+
       <form class="convert-form" onsubmit="return getData(this)">
         <div class="input-container">
           <input class="input" type="url" name="url" placeholder="http//:bit.ly/..." autofocus="true" required />
           <span id="error-container">Invalid URL</span>
         </div>
+
         <input class="btn" id="submit" type="submit" aria-label="Submit" value="reveal" />
       </form>
+
     </div>
+
+    <!-- CONVERTED -->
     <div class="converted-url">
+
       <div class="header">
         <div class="align-all--left">
           <h5 class="heading">Revealed URL</h5>
-          <a href="#modal" class="icon info" rel="modal:open"></a>
-          <a href="#" onclick="copyToClipboard('convertedURL')" class="icon copy"></a>
+          <a href="#info" class="icon info" rel="modal:open" role="button" aria-label="More Info"></a>
+          <a href="#" onclick="copyToClipboard('convertedURL')" class="icon copy" role="button"
+            aria-label="Copy Link"></a>
+          <p id="copied-status">Copied</p>
         </div>
+
         <div class="align-all--right">
           <p id="spam-status"></p>
         </div>
       </div>
+
+      <!-- CONVERTED - link -->
       <a class="url" href="#" id="convertedURL" target="_blank"></a>
     </div>
+
   </main>
 
   <footer>
     <ul class="footer-nav">
       <li class="footer-nav__item"><a href="#about" onclick="" rel="modal:open">About</a></li>
-      <li class="footer-nav__item"><a href="#" onclick="">Report Bug</a></li>
-      <li class="footer-nav__item"><a href="#" onclick="">Request Feature</a></li>
     </ul>
   </footer>
 </body>

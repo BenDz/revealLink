@@ -3,10 +3,18 @@
 
 /* Alignment */
 
-.text--center {text-align: center}
+.text--center {
+  text-align: center
+}
 
-.text--underline {text-decoration: underline}
+.text--underline {
+  text-decoration: underline
+}
 
-.align-all--left > * { float: left}
+.align-all--left>* {
+  float: left
+}
 
-.align-all--right > * { float: right}
+.align-all--right>* {
+  float: right
+}

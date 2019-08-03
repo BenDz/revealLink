@@ -10,7 +10,7 @@ document.onreadystatechange = function () {
 
 // Random Color loader
 $(function () {
-  const items = ['#2529D8', '#FAA916', '#EF2D56', '#6BD425', '#A01A7D']
+  const items = ['#2529D8', '#FAA916', '#EF2D56', '#6BD425', '#A01A7D', '#0767e8', '#07bae8', '#02c554', '#13c502', '#d32f2f', '#512da8']
   const root = document.documentElement;
   let randomColor = items[Math.floor(Math.random() * items.length)];
   root.style.setProperty('--primary-color', `${randomColor}`)
@@ -25,6 +25,8 @@ function copyToClipboard(id) {
   window.getSelection().addRange(range);
   document.execCommand('copy');
   window.getSelection().removeAllRanges();
+
+  $('#copied-status').fadeIn();
 }
 
 // AJAX call
@@ -42,6 +44,9 @@ function getData(form) {
     // Disabling button
     form.elements.submit.setAttribute('disabled', 'true');
     form.elements.submit.value = "Loading";
+    
+    // Resetting copied status
+    $('#copied-status').fadeOut();
 
     // Validations
 
@@ -63,7 +68,7 @@ function getData(form) {
         } else if (res.spam === "false") {
           $('#spam-status').html(`👹 SPAM`)
         } else {
-          $('#spam-status').html(`🤔 No safety info`)
+          $('#spam-status').html(`🤔 No info`)
         }
 
         // Updating Extra details
