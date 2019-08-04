@@ -21,9 +21,14 @@
 </head>
 
 <body>
-  <div id="loader"></div>
 
-  <!-- MODAL - about-->
+  <!-- Toast -->
+  <div id="toast"></div>
+
+  <!-- Loader -->
+  <!-- <div id="loader"></div> -->
+
+  <!-- MODAL: about-->
   <div id="about" class="modal">
     <h2> 🤘Makers</h2>
     <ul>
@@ -39,7 +44,7 @@
     </ul>
   </div>
 
-  <!-- MODAL - info-->
+  <!-- MODAL: info-->
   <div id="info" class="modal">
     <h2> 💡 More details</h2>
     <table style="width:100%">
@@ -52,7 +57,7 @@
         <td id="delay"></td>
       </tr>
       <tr>
-        <td>Status</td>
+        <td>Redirection</td>
         <td id="status"></td>
       </tr>
     </table>
@@ -61,7 +66,7 @@
   <!-- NAV -->
   <nav class="nav">
     <a href="#" class="logo"></a>
-    <p class="converted-stats">Total URLs revealed:<span id="reveal-count">12345</span></p>
+    <p class="converted-stats">Total URLs revealed:<span id="reveal-count">0</span></p>
   </nav>
 
   <!-- MAIN -->
@@ -99,7 +104,7 @@
         </div>
       </div>
 
-      <!-- CONVERTED - link -->
+      <!-- CONVERTED: link -->
       <a class="url" href="#" id="convertedURL" target="_blank"></a>
     </div>
 

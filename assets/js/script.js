@@ -44,7 +44,7 @@ function getData(form) {
     // Disabling button
     form.elements.submit.setAttribute('disabled', 'true');
     form.elements.submit.value = "Loading";
-    
+
     // Resetting copied status
     $('#copied-status').fadeOut();
 
@@ -55,12 +55,13 @@ function getData(form) {
       url: "https://check-user-api.herokuapp.com/api/v1/uncoverUrl/",
       async: true,
       contentType: "application/json",
+      timeout: 3000,
       data: JSON.stringify({
         url: url
       }),
       success: function (res) {
         // Updating Data
-        $('#convertedURL').text(res.url);
+        res.isShortUrl === "true" ? $('#convertedURL').text(res.url) : $('#convertedURL').text("😑 Thats not a short URL");
         $('#convertedURL').attr('href', res.url);
 
         if (res.spam === "true") {
@@ -74,11 +75,11 @@ function getData(form) {
         // Updating Extra details
         $('#title').html(res.pageTitle);
         $('#delay').html(`${res.delay}ms`);
-        $('#status').html(res.status);
+        $('#status').html(res.statusCode);
 
         // Updating Stats
         $('.converted-stats').fadeIn('fast');
-        $('#reveal-count').html(res.count);
+        $('#reveal-count').html(res.urlsShortenedTillNow);
 
         // Enabling submit button
         form.elements.submit.removeAttribute('disabled');
@@ -91,6 +92,17 @@ function getData(form) {
         // Enabling submit button
         form.elements.submit.removeAttribute('disabled');
         form.elements.submit.value = "reveal";
+
+        // Timeout
+        if (err.statusText == "timeout") {
+          $('#toast').html('😓 Timed out !! Try again later');
+          $('#toast').fadeIn();
+          setTimeout(() => { $('#toast').hide() }, 3000);
+        } else {
+          $('#toast').html('Uff!! An error on our end and we are notified ✌️');
+          $('#toast').fadeIn();
+          setTimeout(() => { $('#toast').hide() }, 3000);
+        }
       }
     });
   } else {
