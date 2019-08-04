@@ -65,9 +65,9 @@ function getData(form) {
         $('#convertedURL').attr('href', res.url);
 
         if (res.spam === true) {
-          $('#spam-status').html(`👍 SAFE`)
-        } else if (res.spam === "false") {
           $('#spam-status').html(`👹 SPAM`)
+        } else if (res.spam === false) {
+          $('#spam-status').html(`👍 SAFE`)
         } else {
           $('#spam-status').html(`🤔 No info`)
         }
