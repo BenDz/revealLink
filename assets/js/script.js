@@ -61,10 +61,10 @@ function getData(form) {
       }),
       success: function (res) {
         // Updating Data
-        res.isShortUrl === "true" ? $('#convertedURL').text(res.url) : $('#convertedURL').text("😑 Thats not a short URL");
+        res.isShortUrl === true ? $('#convertedURL').text(res.url) : $('#convertedURL').text("😑 Thats not a short URL");
         $('#convertedURL').attr('href', res.url);
 
-        if (res.spam === "true") {
+        if (res.spam === true) {
           $('#spam-status').html(`👍 SAFE`)
         } else if (res.spam === "false") {
           $('#spam-status').html(`👹 SPAM`)
