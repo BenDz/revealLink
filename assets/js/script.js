@@ -66,7 +66,7 @@ function getData(form) {
 
         if (res.spam === true) {
           $('#spam-status').html(`👍 SAFE`)
-        } else if (res.spam === "false") {
+        } else if (res.spam === false) {
           $('#spam-status').html(`👹 SPAM`)
         } else {
           $('#spam-status').html(`🤔 No info`)
