@@ -79,26 +79,27 @@ function getData(form) {
       }),
       success: function (res) {
         // Updating Data
+        
         res.isShortUrl === true ? $('#convertedURL').text(res.url) : $('#convertedURL').text("😑 Thats not a short URL");
-        $('#convertedURL').attr('href', res.url);
+        res.url ? $('#convertedURL').attr('href', res.url) : $('#convertedURL').attr('href', url)
 
         // Number(0.987.toFixed(2))
 
         if (res.spamDetails) {
 
-          let spamProbability = (res.spamDetails.servicesReportSpam / res.spamDetails.servicesChecked).toFixed(2);
+          let safetyProbability = (1 - (res.spamDetails.servicesReportSpam / res.spamDetails.servicesChecked)).toFixed(2) * 100;
 
-          if (spamProbability < 0.25) {
-            $('#spam-status').html(`👍 SAFE`);
-          } else if (spamProbability > 0.25 && spamProbability <= 0.5) {
-            $('#spam-status').html(`🤞 ALMOST SAFE`)
-          } else if (spamProbability > 0.5 && spamProbability <= 0.75) {
-            $('#spam-status').html(`⚠️ BE CAREFUL`)
-          } else {
+          if (safetyProbability < 0.25) {
             $('#spam-status').html(`👹 SPAM`);
+          } else if (safetyProbability > 0.25 && safetyProbability <= 0.5) {
+            $('#spam-status').html(`⚠️ BE CAREFUL`);
+          } else if (safetyProbability > 0.5 && safetyProbability <= 0.75) {
+            $('#spam-status').html(`🤞 ALMOST SAFE`);
+          } else {
+            $('#spam-status').html(`👍 SAFE`);
           }
 
-          $('#spam-status').attr('data-tooltip', `${1 - spamProbability}% Sure`);
+          $('#spam-status').attr('data-tooltip', `${safetyProbability}% Sure`);
 
         } else {
           $('#spam-status').html(`🤔 No info`)
