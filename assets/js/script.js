@@ -73,7 +73,7 @@ function getData(form) {
       url: "https://check-user-api.herokuapp.com/api/v1/uncoverUrl/",
       async: true,
       contentType: "application/json",
-      timeout: 3000,
+      timeout: 5000,
       data: JSON.stringify({
         url: url
       }),

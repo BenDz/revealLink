@@ -6,7 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>RevealURL</title>
-  
+
+  <meta property="og:url" content="https://revealurl.netlify.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="RevealURL" />
+  <meta property="og:description"
+    content="Tired of spammy short links! Worry no more. Beat spam and uncover the actual link even before you click it with RevealURL" />
+  <meta property="og:image" content="/assets/icons/favicon.png" />
+
   <link rel="icon" type="image/png" sizes="28x32" href="assets/icons/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
@@ -19,6 +26,10 @@
 </head>
 
 <body>
+  <!-- FB SHARE CODE-->
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous"
+    src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v4.0"></script>
 
   <!-- Toast -->
   <div id="toast"></div>
@@ -28,17 +39,38 @@
 
   <!-- MODAL: about-->
   <div id="about" class="modal">
-    <h2> 🤘Makers</h2>
+    <h2>🤘 Makers</h2>
     <ul>
-      <li><a href="https://gaurav-shankar.github.io/grv19/" target="_blank">Gaurav Shankar 👨‍💻</a></li>
-      <li><a href="https://sarathsantoshdamaraju.github.io/sarathdamaraju/" target="_blank">Krishna Damaraju 🖌️
-          👨‍💻</a></li>
+      <li><a href="https://gaurav-shankar.github.io/grv19/" target="_blank">Gaurav Shankar [👨‍💻 & 🛡️]</a></li>
+      <li><a href="https://sarathsantoshdamaraju.github.io/sarathdamaraju/" target="_blank">Krishna Damaraju [🖌️ & 👨‍💻]</a></li>
     </ul>
 
-    <h2> 🏆 Others</h2>
+    <h2>🏆 Others</h2>
     <ul>
-      <li class="footer-nav__item"><a href="https://github.com/SarathSantoshDamaraju/revealLink/issues/new?assignees=&labels=&template=bug_report.md&title=" target="_blank">Report Bug</a></li>
-      <li class="footer-nav__item"><a href="https://github.com/SarathSantoshDamaraju/revealLink/issues/new?assignees=&labels=&template=feature_request.md&title=" target="_blank">Request Feature</a></li>
+      <li class="footer-nav__item"><a
+          href="https://github.com/SarathSantoshDamaraju/revealLink/issues/new?assignees=&labels=&template=bug_report.md&title="
+          target="_blank">Report Bug</a></li>
+      <li class="footer-nav__item"><a
+          href="https://github.com/SarathSantoshDamaraju/revealLink/issues/new?assignees=&labels=&template=feature_request.md&title="
+          target="_blank">Request Feature</a></li>
+    </ul>
+
+    <h3>😍 Like us? Show us to the world!</h3>
+    <ul class="fb-share-button" data-href="https://revealurl.netlify.com" data-layout="button" data-size="small">
+      <li>
+        <a target="_blank"
+          href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Frevealurl.netlify.com%2F&amp;src=sdkpreparse"
+          class="">
+          [FB]
+        </a>
+      </li>
+
+      <li>
+        <a class="twitter-share-button" target="_blank"
+          href="https://twitter.com/intent/tweet?text='Uncover spam short links now with RevealURL.'&url=https://revealurl.netlify.com">
+          [Twitter]
+        </a>
+      </li>
     </ul>
   </div>
 
@@ -64,7 +96,7 @@
   <!-- NAV -->
   <nav class="nav">
     <a href="#" class="logo"></a>
-    <p class="converted-stats">Total URLs revealed:<span id="reveal-count">0</span></p>
+    <p class="converted-stats">Total URL Hits:<span id="reveal-count">0</span></p>
   </nav>
 
   <!-- MAIN -->
