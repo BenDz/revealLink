@@ -25,6 +25,27 @@ ul {
 }
 
 /* ======
+  * SCROLL BAR 
+====== */
+
+body::-webkit-scrollbar,
+::-moz-sc {
+  width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background: #ffffff80;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}
+
+/* ======
   * Toast 
 ====== */
 
@@ -239,7 +260,7 @@ td {
   min-height: 90px;
   max-height: 120px;
   word-break: break-word;
-  overflow: scroll;
+  overflow-x: hidden;
 }
 
 .converted-url .header {
@@ -259,6 +280,11 @@ td {
   display: none;
   margin: 0;
   padding: 0;
+}
+
+.converted-url .url {
+  margin-top: 16px;
+  display: block;
 }
 
 .converted-url .url,
@@ -371,4 +397,26 @@ footer .footer-nav .footer-nav__item a:hover:after {
     bottom: 50px;
     height: 80px;
   }
+}
+
+/* ======
+  * UTILS 
+====== */
+
+/* Alignment */
+
+.text--center {
+  text-align: center
+}
+
+.text--underline {
+  text-decoration: underline
+}
+
+.align-all--left>* {
+  float: left
+}
+
+.align-all--right>* {
+  float: right
 }

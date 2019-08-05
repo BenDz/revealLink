@@ -4,6 +4,15 @@ document.onreadystatechange = function () {
   if (state == 'complete') {
     setTimeout(function () {
       $('#loader').fadeOut('slow');
+
+      // checking for link on load
+      if (window.location.search) {
+        let url = window.location.search.replace('?url=', '');
+        if (url.trim().length > 0) {
+          $('.input')[0].value = url;
+          $('#submit').click();
+        }
+      }
     }, 1000);
   }
 }
@@ -15,6 +24,7 @@ $(function () {
   let randomColor = items[Math.floor(Math.random() * items.length)];
   root.style.setProperty('--primary-color', `${randomColor}`)
 });
+
 
 // Clipboard
 function copyToClipboard(id) {
