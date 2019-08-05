@@ -79,9 +79,15 @@ function getData(form) {
       }),
       success: function (res) {
         // Updating Data
-        
-        res.isShortUrl === true ? $('#convertedURL').text(res.url) : $('#convertedURL').text("😑 Thats not a short URL");
-        res.url ? $('#convertedURL').attr('href', res.url) : $('#convertedURL').attr('href', url)
+        if (res.isShortUrl === true) {
+          $('#convertedURL').text(res.url);
+          $('#copy-container').show();
+        } else { 
+          $('#convertedURL').text("😑 Thats not a short URL"); 
+          $('#copy-container').hide();
+        }
+
+        res.url ? $('#convertedURL').attr('href', res.url) : $('#convertedURL').attr('href', url);
 
         // Number(0.987.toFixed(2))
 
