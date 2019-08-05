@@ -274,6 +274,7 @@ td {
   max-height: 120px;
   word-break: break-word;
   overflow-x: unset;
+  overflow-y: scroll;
 }
 
 .converted-url .header {
