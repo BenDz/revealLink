@@ -11,11 +11,11 @@ document.onreadystatechange = function () {
       if (window.location.search) {
 
         let search = window.location.search.split('&');
-        let finder = new RegExp('.*url=','gi');
+        let finder = new RegExp('.*url=', 'gi');
         let url = search.filter((each) => each.match(finder));
 
         // EDGE CASE - if query params has multiple url params, consider only first
-        url = url[0].replace(finder,'')
+        url = url[0].replace(finder, '')
 
         if (url.trim().length > 0) {
           $('.input')[0].value = url;
@@ -82,10 +82,24 @@ function getData(form) {
         res.isShortUrl === true ? $('#convertedURL').text(res.url) : $('#convertedURL').text("😑 Thats not a short URL");
         $('#convertedURL').attr('href', res.url);
 
-        if (res.spam === true) {
-          $('#spam-status').html(`👹 SPAM`)
-        } else if (res.spam === false) {
-          $('#spam-status').html(`👍 SAFE`)
+        // Number(0.987.toFixed(2))
+
+        if (res.spamDetails) {
+
+          let spamProbability = (res.spamDetails.servicesReportSpam / res.spamDetails.servicesChecked).toFixed(2);
+
+          if (spamProbability < 0.25) {
+            $('#spam-status').html(`👍 SAFE`);
+          } else if (spamProbability > 0.25 && spamProbability <= 0.5) {
+            $('#spam-status').html(`🤞 ALMOST SAFE`)
+          } else if (spamProbability > 0.5 && spamProbability <= 0.75) {
+            $('#spam-status').html(`⚠️ BE CAREFUL`)
+          } else {
+            $('#spam-status').html(`👹 SPAM`);
+          }
+
+          $('#spam-status').attr('data-tooltip', `${spamProbability}% Unsure`);
+
         } else {
           $('#spam-status').html(`🤔 No info`)
         }
