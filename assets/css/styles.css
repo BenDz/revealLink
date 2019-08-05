@@ -329,10 +329,9 @@ a:hover {
 [data-tooltip]:before {
   position: absolute;
   bottom: 40px;
-  right: 0;
+  right: -20px;
   padding: 4px;
-  width: auto;
-  min-width: 50px;
+  width: 100px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;

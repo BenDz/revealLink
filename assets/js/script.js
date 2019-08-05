@@ -98,7 +98,7 @@ function getData(form) {
             $('#spam-status').html(`👹 SPAM`);
           }
 
-          $('#spam-status').attr('data-tooltip', `${spamProbability}% Unsure`);
+          $('#spam-status').attr('data-tooltip', `${1 - spamProbability}% Sure`);
 
         } else {
           $('#spam-status').html(`🤔 No info`)
