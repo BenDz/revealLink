@@ -1,13 +1,22 @@
+"use strict";
+
 // Loader
 document.onreadystatechange = function () {
-  var state = document.readyState
+  let state = document.readyState
   if (state == 'complete') {
     setTimeout(function () {
       $('#loader').fadeOut('slow');
 
       // checking for link on load
       if (window.location.search) {
-        let url = window.location.search.replace('?url=', '');
+
+        let search = window.location.search.split('&');
+        let finder = new RegExp('.*url=','gi');
+        let url = search.filter((each) => each.match(finder));
+
+        // EDGE CASE - if query params has multiple url params, consider only first
+        url = url[0].replace(finder,'')
+
         if (url.trim().length > 0) {
           $('.input')[0].value = url;
           $('#submit').click();
@@ -28,8 +37,8 @@ $(function () {
 
 // Clipboard
 function copyToClipboard(id) {
-  var from = document.getElementById(id);
-  var range = document.createRange();
+  let from = document.getElementById(id);
+  let range = document.createRange();
   window.getSelection().removeAllRanges();
   range.selectNode(from);
   window.getSelection().addRange(range);
@@ -58,7 +67,6 @@ function getData(form) {
     // Resetting copied status
     $('#copied-status').fadeOut();
 
-    // Validations
 
     // AJAX
     $.post({
