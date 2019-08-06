@@ -14,12 +14,14 @@ document.onreadystatechange = function () {
         let finder = new RegExp('.*url=', 'gi');
         let url = search.filter((each) => each.match(finder));
 
-        // EDGE CASE - if query params has multiple url params, consider only first
-        url = url[0].replace(finder, '')
+        if (url.length > 0) {
+          // EDGE CASE - if query params has multiple url params, consider only first
+          url = url[0].replace(finder, '')
 
-        if (url.trim().length > 0) {
-          $('.input')[0].value = url;
-          $('#submit').click();
+          if (url.trim().length > 0) {
+            $('.input')[0].value = url;
+            $('#submit').click();
+          }
         }
       }
     }, 1000);
@@ -73,7 +75,6 @@ function getData(form) {
       url: "https://check-user-api.herokuapp.com/api/v1/uncoverUrl/",
       async: true,
       contentType: "application/json",
-      timeout: 10000,
       data: JSON.stringify({
         url: url
       }),
@@ -82,8 +83,8 @@ function getData(form) {
         if (res.isShortUrl === true) {
           $('#convertedURL').text(res.url);
           $('#copy-container').show();
-        } else { 
-          $('#convertedURL').text("😑 Thats not a short URL"); 
+        } else {
+          $('#convertedURL').text("😑 Thats not a short URL");
           $('#copy-container').hide();
         }
 

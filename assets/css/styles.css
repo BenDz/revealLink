@@ -429,11 +429,11 @@ footer .footer-nav .footer-nav__item a:hover:after {
   }
 }
 
-@media only screen and (max-height: 500px) {
+/* @media only screen and (max-height: 500px) {
   .convert-form {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
   }
 
   .convert-form .input {
@@ -454,7 +454,7 @@ footer .footer-nav .footer-nav__item a:hover:after {
     bottom: 50px;
     height: 80px;
   }
-}
+} */
 
 /* ======
   * UTILS 
