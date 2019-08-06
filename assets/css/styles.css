@@ -271,10 +271,8 @@ td {
   left: 0;
   right: 0;
   min-height: 90px;
-  max-height: 120px;
   word-break: break-word;
   overflow-x: unset;
-  overflow-y: scroll;
 }
 
 .converted-url .header {
@@ -299,6 +297,10 @@ td {
 .converted-url .url {
   margin-top: 16px;
   display: block;
+  max-height: 60px;
+  overflow-y: auto;
+  width: 100%;
+  font-size: .9em;
 }
 
 .converted-url .url,
