@@ -431,7 +431,7 @@ footer .footer-nav .footer-nav__item a:hover:after {
   .convert-form {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
   }
 
   .convert-form .input {
